@@ -1,7 +1,35 @@
-/*!
-* Start Bootstrap - Shop Homepage v5.0.6 (https://startbootstrap.com/template/shop-homepage)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
-*/
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
+var base64Image = "";
+// var products = [];
+
+function selectImage() {
+  return new Promise(function(resolve, reject) {
+    var imageFile = document.getElementById('image-input').files[0];
+    if (imageFile == null) {
+      reject();
+      return;
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.onload = function() {
+      var base64String = reader.result;
+      base64Image = base64String;
+      resolve();
+    };
+  });
+}
+
+function testclick() {
+  console.log(123);
+  
+  selectImage().then(function() {
+    console.log(base64Image);})
+
+    selectImage().then((callback) => {
+        products.push({
+          title: el("#Item-Name").value,
+          description: el("#Item-description").value,
+          price: Number(el("#Item-Price").value),
+          image: base64Image,
+        });
+  });
+}
