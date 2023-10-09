@@ -20,7 +20,7 @@ function selectImage() {
 
 function testclick() {
   console.log(123);
-  
+
   selectImage().then(function() {
     console.log(base64Image);})
 
@@ -32,4 +32,6 @@ function testclick() {
           image: base64Image,
         });
   });
+
+  products = getStorage("shopProducts", products);
 }
